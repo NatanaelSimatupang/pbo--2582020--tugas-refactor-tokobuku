@@ -1,2 +1,24 @@
-public class StrukKonsolPrinter {
+public class StrukKonsolPrinter implements StrukPrinter {
+    @Override
+    public void cetak(String pelanggan, Keranjang keranjang, MetodeBayar metode, int totalBayar) {
+        System.out.println("================ STRUK =================");
+        System.out.println("Pelanggan : " + pelanggan);
+        for (Produk p : keranjang.getProduk()) {
+            System.out.println(p.getJudul() + " (" + p.getPenulis() + ")");
+            System.out.println("  Harga       : " + Rupiah.format(p.getHarga()));
+            System.out.println("  Keterangan  : " + p.keterangan());
+            System.out.println("  Harga akhir : " + Rupiah.format(p.hargaAkhir()));
+        }
+        System.out.println("-----------------------------------------");
+        System.out.println("Total belanja : " + Rupiah.format(keranjang.totalBelanja()));
+        System.out.println("Metode bayar  : " + metode.nama());
+        System.out.println("Total bayar   : " + Rupiah.format(totalBayar));
+        System.out.println("Berat kiriman : " + keranjang.totalBeratGram() + " gram");
+
+        System.out.println("-------------- LINK UNDUH ---------------");
+        for (DapatDiunduh d : keranjang.getDapatDiunduh()) {
+            System.out.println(d.linkUnduh());
+        }
+        System.out.println("-----------------------------------------");
+    }
 }
