@@ -1,2 +1,5 @@
-public class MetodeBayar {
+public interface MetodeBayar {
+    String nama();
+
+    int totalBayar(int totalBelanja);
 }
